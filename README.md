@@ -29,3 +29,14 @@ $ poetry shell
 ```shell
 $ deactivate
 ```
+
+### API documentation
+
+FastAPI has built-in API docs generating, so you can check it via
+```http request
+http://localhost:8000/docs
+```
+or
+```http request
+http://localhost:8000/redoc
+```
