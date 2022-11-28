@@ -1,0 +1,6 @@
+docker-compose.yaml
+Dockerfile
+.gitignore
+.pytest_cache/
+__pycache__
+
