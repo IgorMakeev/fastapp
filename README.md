@@ -1,7 +1,7 @@
 # fastapp
 
 
-### SETUP
+## SETUP
 1) create `.env` file following the `.envexample`
 2) spin the app inside docker
 ```shell
@@ -30,7 +30,31 @@ $ poetry shell
 $ deactivate
 ```
 
-### API documentation
+## Development workflow
+
+#### Testing
+
+Run tests to ensure everything works fine:
+
+```shell
+$ docker exec app pytest
+```
+
+Run specific test dir:
+
+```shell
+$ docker exec app pytest app/tests
+```
+
+Run specific test function:
+
+```shell
+$ docker exec app pytest app/tests/test_api.py::test_say_hello
+```
+
+You could also enter the shell inside docker container and omit `docker exec app` every time.
+
+## API documentation
 
 FastAPI has built-in API docs generating, so you can check it via
 ```http request
