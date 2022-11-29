@@ -1,12 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        ENV        = 'staging'
-        REGION     = 'eu-north-1'
-        REPOSITORY = '903549323823.dkr.ecr.eu-north-1.amazonaws.com'
-        APP_NAME   = 'fast-api'
-    }
     stages {
         stage('Build') {
             steps {
