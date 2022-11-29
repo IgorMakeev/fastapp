@@ -4,4 +4,4 @@ echo ${REPOSITORY}
 echo ${ENV}
 echo ${REGION}
 
-aws s3 ls
+aws ecr describe-repositories
