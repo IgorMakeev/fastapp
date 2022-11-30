@@ -4,17 +4,18 @@ pipeline {
     stages {
         stage(" execute Ansible") {
             steps {
-                ansiblePlaybook credentialsId: 'ansible-ssh-web', disableHostKeyChecking: true, installation: 'Ansible', playbook: 'deployment/ansible/deploy.yaml'
+                ansiblePlaybook credentialsId: 'ansible-ssh-web', disableHostKeyChecking: true, installation: 'Ansible',
+                 inventory: 'deployment/ansible/hosts.inv', playbook: 'deployment/ansible/deploy.yaml'
             }
         }
         stage('Build') {
             steps {
-                sh './deployment/scripts/build.sh'
+                //sh './deployment/scripts/build.sh'
             }
         }
         stage('Push') {
             steps {
-                sh './deployment/scripts/push.sh'
+                //sh './deployment/scripts/push.sh'
             }
         }
     }

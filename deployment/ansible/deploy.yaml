@@ -4,12 +4,13 @@
   become: yes
   gather_facts: False
 
+  vars:
+    aws_ecr_login_repository: 903549323823.dkr.ecr.eu-north-1.amazonaws.com/fast-api-staging:latest
+
   tasks:
     - name: login
       ansible.builtin.shell: "aws ecr get-login-password | docker login --username AWS --password-stdin {{ aws_ecr_login_repository }}"
       when: aws_ecr_login_repository is not none and aws_ecr_login_repository != ''
-      vars:
-        aws_ecr_login_repository: 903549323823.dkr.ecr.eu-north-1.amazonaws.com/fast-api-staging:latest
 
     - name: copy docker-compose.yaml
       copy:
