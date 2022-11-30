@@ -26,4 +26,4 @@
       docker_compose:
         project_src: ./
       environment:
-        IMAGE: "{{image}}:latest"
+        IMAGE: "{{image}}"
