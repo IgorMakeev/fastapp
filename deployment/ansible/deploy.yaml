@@ -4,11 +4,6 @@
   become: yes
   gather_facts: False
 
-  vars:
-    aws_ecr_login_repository: "{{aws_ecr_login_repository}}"
-    app_name: "{{app_name}}"
-    env: "{{env}}"
-
   tasks:
     - name: login
       ansible.builtin.shell: "aws ecr get-login-password | docker login --username AWS --password-stdin {{ aws_ecr_login_repository }}"
