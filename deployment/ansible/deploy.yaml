@@ -13,7 +13,7 @@
       when: aws_ecr_login_repository is not none and aws_ecr_login_repository != ''
 
     - name: export repository variable
-        ansible.builtin.shell: "export REPOSITORY={{aws_ecr_login_repository}}"
+      ansible.builtin.shell: "export REPOSITORY={{aws_ecr_login_repository}}"
 
     - name: copy docker-compose.yaml
       copy:
