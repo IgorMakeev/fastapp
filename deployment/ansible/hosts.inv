@@ -1,2 +1,2 @@
 [staging]
-web_server  ansible_host=172.31.35.93  ansible_user=ubuntu
+web_server  ansible_host=172.31.36.109  ansible_user=ubuntu
