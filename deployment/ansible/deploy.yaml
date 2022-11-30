@@ -1,0 +1,20 @@
+---
+- name: Deploying
+  hosts: staging
+  become: yes
+
+  tasks:
+    - name: Ping
+      ping:
+
+    - name: push docker-compose.yaml
+      copy:
+        src: ../docker-compose.yaml
+        dest: ./docker-compose.yaml
+        owner: ubuntu
+        group: ubuntu
+        mode: 0775
+
+    - name: docker compose down
+      docker_compose:
+        project_src: ./
