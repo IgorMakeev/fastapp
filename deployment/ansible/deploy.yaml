@@ -3,10 +3,6 @@
   hosts: staging
   become: yes
 
-  tasks:
-    - name: Ping
-      ping:
-
     - name: push docker-compose.yaml
       copy:
         src: ../docker-compose.yaml
@@ -16,5 +12,10 @@
         mode: 0775
 
     - name: docker compose down
+      docker_compose:
+        project_src: ./
+        state: absent
+
+    - name: docker compose up
       docker_compose:
         project_src: ./
