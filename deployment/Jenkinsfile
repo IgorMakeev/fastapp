@@ -2,12 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage(" execute Ansible") {
-            steps {
-                ansiblePlaybook credentialsId: 'ansible-ssh-web', disableHostKeyChecking: true, installation: 'Ansible',
-                 inventory: 'deployment/ansible/hosts.inv', playbook: 'deployment/ansible/deploy.yaml'
-            }
-        }
+
         stage('Build') {
             steps {
                 sh './deployment/scripts/build.sh'
@@ -16,6 +11,12 @@ pipeline {
         stage('Push') {
             steps {
                 sh './deployment/scripts/push.sh'
+            }
+        }
+        stage("Deploy") {
+            steps {
+                ansiblePlaybook credentialsId: 'ansible-ssh-web', disableHostKeyChecking: true, installation: 'Ansible',
+                 inventory: 'deployment/ansible/hosts.inv', playbook: 'deployment/ansible/deploy.yaml'
             }
         }
     }
