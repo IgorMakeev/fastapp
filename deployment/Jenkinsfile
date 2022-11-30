@@ -19,7 +19,7 @@ pipeline {
             steps {
                 ansiblePlaybook credentialsId: 'ansible-ssh-web', disableHostKeyChecking: true, installation: 'Ansible',
                  inventory: 'deployment/ansible/hosts.inv', playbook: 'deployment/ansible/deploy.yaml',
-                 extras: "-e aws_ecr_login_repository=${REPOSITORY}"
+                 extras: '-e aws_ecr_login_repository=${REPOSITORY}'
             }
         }
     }
