@@ -5,7 +5,7 @@
   gather_facts: False
 
   vars:
-    aws_ecr_login_repository: {{aws_ecr_login_repository}}
+    aws_ecr_login_repository: "{{aws_ecr_login_repository}}"
 
   tasks:
     - name: login
