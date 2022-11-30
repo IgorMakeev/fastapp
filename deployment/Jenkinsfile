@@ -10,12 +10,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                //sh './deployment/scripts/build.sh'
+                sh './deployment/scripts/build.sh'
             }
         }
         stage('Push') {
             steps {
-                //sh './deployment/scripts/push.sh'
+                sh './deployment/scripts/push.sh'
             }
         }
     }
