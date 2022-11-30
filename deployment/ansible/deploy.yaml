@@ -31,4 +31,4 @@
       docker_compose:
         project_src: ./
       environment:
-        IMAGE: "{{aws_ecr_login_repository}}/${app_name}-${env}:latest"
+        IMAGE: "{{aws_ecr_login_repository}}/{{app_name}}-{{env}}:latest"
