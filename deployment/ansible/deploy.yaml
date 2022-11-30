@@ -12,9 +12,6 @@
       ansible.builtin.shell: "aws ecr get-login-password | docker login --username AWS --password-stdin {{ aws_ecr_login_repository }}"
       when: aws_ecr_login_repository is not none and aws_ecr_login_repository != ''
 
-    - name: export repository variable
-      shell: "export REPOSITORY='{{aws_ecr_login_repository}}'"
-
     - name: copy docker-compose.yaml
       copy:
         src: ../docker-compose.yaml
@@ -31,3 +28,5 @@
     - name: docker compose up
       docker_compose:
         project_src: ./
+      environment:
+        REPOSITORY: "{{aws_ecr_login_repository}}"
