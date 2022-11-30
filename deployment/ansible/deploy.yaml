@@ -6,6 +6,8 @@
 
   vars:
     aws_ecr_login_repository: "{{aws_ecr_login_repository}}"
+    app_name: "{{app_name}}"
+    env: "{{env}}"
 
   tasks:
     - name: login
@@ -29,4 +31,4 @@
       docker_compose:
         project_src: ./
       environment:
-        REPOSITORY: "{{aws_ecr_login_repository}}"
+        IMAGE: "{{aws_ecr_login_repository}}/${app_name}-${env}:latest"
