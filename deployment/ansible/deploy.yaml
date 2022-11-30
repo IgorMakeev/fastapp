@@ -5,7 +5,7 @@
   gather_facts: False
 
   vars:
-    aws_ecr_login_repository: 903549323823.dkr.ecr.eu-north-1.amazonaws.com/fast-api-staging:latest
+    aws_ecr_login_repository: {{REPOSITORY}}
 
   tasks:
     - name: login
