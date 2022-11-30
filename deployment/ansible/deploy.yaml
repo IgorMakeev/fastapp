@@ -25,5 +25,5 @@
     - name: docker compose up
       docker_compose:
         project_src: ./
-      env:
+      environment:
         IMAGE: "{{image}}"
