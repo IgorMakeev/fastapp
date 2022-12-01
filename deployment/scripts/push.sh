@@ -8,6 +8,5 @@ aws ecr get-login-password \
    --password-stdin ${REPOSITORY}
 
 # push
-docker tag jenkins-builds:latest ${IMAGE}
 docker push ${IMAGE}
 # docker rmi -f $(docker images -q)
