@@ -8,6 +8,6 @@ aws ecr get-login-password \
    --password-stdin ${REPOSITORY}
 
 # push
-docker tag jenkins-builds:latest ${REPOSITORY}/${APP_NAME}-${ENV}:latest
-docker push ${REPOSITORY}/${APP_NAME}-${ENV}:latest
+docker tag jenkins-builds:latest ${IMAGE}
+docker push ${IMAGE}
 # docker rmi -f $(docker images -q)
