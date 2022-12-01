@@ -20,7 +20,7 @@
     - name: copy .env file
       copy:
         src: ../../.env
-        dest: ./env
+        dest: ./.env
         mode: 0644
 
     - name: docker compose down
