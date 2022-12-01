@@ -19,7 +19,7 @@
 
     - name: copy .env file
       copy:
-        src: ./.env
+        src: ../../.env
         dest: ./env
         mode: 0644
 
