@@ -12,7 +12,7 @@ class Something(str, Enum):
 
 
 @app.get("/")
-async def root():
+async def hello_world():
     return {"message": "Hello World"}
 
 
@@ -23,5 +23,4 @@ async def say_hello(name: str):
 
 @app.get('/enum/{model}')
 async def test_enum(model: Something):
-    return {'message', model}
-
+    return {'message': model}
