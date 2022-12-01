@@ -17,6 +17,12 @@
         group: ubuntu
         mode: 0775
 
+    - name: copy .env file
+      copy:
+        src: ./.env
+        dest: ./env
+        mode: 0644
+
     - name: docker compose down
       docker_compose:
         project_src: ./
