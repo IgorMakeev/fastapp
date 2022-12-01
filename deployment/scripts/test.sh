@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker compose -f ./deployment/docker-compose.yaml -d
+docker compose -f ./deployment/docker-compose.yaml up -d
 
 cat << EOF > ./deployment/.env
 POSTGRES_USER=${POSTGRES_USER}
