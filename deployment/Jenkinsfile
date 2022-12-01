@@ -23,7 +23,7 @@ pipeline {
 
         stage("Deploy") {
             steps {
-                sh './deployment/ansible/env.sh'
+                sh './deployment/scripts/env.sh'
 
                 ansiblePlaybook credentialsId: 'ansible-ssh-web', disableHostKeyChecking: true, installation: 'Ansible',
                  inventory: 'deployment/ansible/hosts.inv', playbook: 'deployment/ansible/deploy.yaml',
