@@ -11,6 +11,7 @@ services:
     depends_on:
       - db
     command: uvicorn app:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    restart: always
     environment:
       - CONFIG=local
       - TESTING=1
