@@ -1,6 +1,6 @@
 def test_hello_world_response(client):
     response_body = client.get('/').json()
-    assert response_body.get('message') == 'Hello World. Version 0.0.2'
+    assert response_body.get('message') == 'Hello World. Version 0.0.2. New build'
 
 
 def test_say_hello(client):
