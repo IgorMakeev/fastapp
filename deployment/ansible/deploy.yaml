@@ -32,6 +32,7 @@
       shell: | 
         image=`docker images | awk '{print $3}'`
         docker rmi ${image} -f
+      ignore_errors: yes
 
     - name: docker compose up
       docker_compose:
