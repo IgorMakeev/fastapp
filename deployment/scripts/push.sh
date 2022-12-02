@@ -11,4 +11,4 @@ aws ecr get-login-password \
 docker push ${IMAGE}
 
 # clean up
-docker image prune
+docker rm -f $(docker ps -aq)
