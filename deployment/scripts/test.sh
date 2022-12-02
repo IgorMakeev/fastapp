@@ -6,7 +6,7 @@ POSTGRES_PASSWORD=app
 POSTGRES_DB=app
 EOF
 
-docker-compose up -f ./deployment/docker-compose.yaml  -d
+docker compose -f ./deployment/docker-compose.yaml up  -d
 
 docker exec app pytest
 
