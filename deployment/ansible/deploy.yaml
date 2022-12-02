@@ -30,8 +30,8 @@
 
     - name: cleanup dangling images
       shell: | 
-        image=`docker images | awk '{print $3}'`
-        docker rmi ${image} -f
+        images=`docker images | awk '{print $3}'`
+        docker rmi ${images} -f
       ignore_errors: yes
 
     - name: docker compose up
