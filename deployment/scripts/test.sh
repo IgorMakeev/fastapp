@@ -10,6 +10,6 @@ EOF
 
 docker exec app pytest
 
-docker compose down -f ./deployment/docker-compose.yaml
+docker-compose down -f ./deployment/docker-compose.yaml
 
 rm ./deployment/.env
