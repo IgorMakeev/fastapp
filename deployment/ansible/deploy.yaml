@@ -29,9 +29,9 @@
         state: absent
 
     - name: cleanup dangling images
-        shell: | 
-          image=`docker images | awk '{print $3}'`
-          docker rmi ${image} -f
+      shell: | 
+        image=`docker images | awk '{print $3}'`
+        docker rmi ${image} -f
 
     - name: docker compose up
       docker_compose:
