@@ -10,6 +10,6 @@ docker-compose up -f ./deployment/docker-compose.yaml  -d
 
 docker exec app pytest
 
-docker-compose down -f ./deployment/docker-compose.yaml
+docker rm -f $(docker ps -aq)
 
 rm ./deployment/.env
