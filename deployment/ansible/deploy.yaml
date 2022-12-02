@@ -23,33 +23,15 @@
         dest: ./.env
         mode: 0644
 
-#    - name: docker compose down
-#      docker_compose:
-#        project_src: ./
-#        state: absent
-
-    - name: deleting docker objects 1
-      docker_host_info:
-        images: yes
-        containers: yes
-      register: docker_objects
-
-    - name: deleting docker objects 2
-      docker_container:
-        name: "{{ item.Id }}"
+    - name: docker compose down
+      docker_compose:
+        project_src: ./
         state: absent
-      loop: "{{ docker_objects.containers }}"
-      loop_control:
-        label: "{{ item.Id }}"
 
-    - name: deleting docker objects 3
-      docker_image:
-        name: item.RepoTags | first
-        state: absent
-        force_absent: yes
-      loop: "{{ docker_objects.images }}"
-      loop_control:
-        label: "{{ item.RepoTags | first }}"
+    - name: cleanup dangling images
+        shell: | 
+          image=`docker images | awk '{print $3}'`
+          docker rmi ${image} -f
 
     - name: docker compose up
       docker_compose:
