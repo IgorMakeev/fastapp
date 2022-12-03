@@ -3,18 +3,15 @@ version: '3'
 services:
   app:
     container_name: 'app'
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - '.:/app'
+    image: ${IMAGE}
     ports:
-      - '8000:8000'
+      - '80:8000'
     env_file:
       - .env
     depends_on:
       - db
     command: uvicorn app:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    restart: always
     environment:
       - CONFIG=local
       - TESTING=1

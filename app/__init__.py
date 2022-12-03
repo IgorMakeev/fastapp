@@ -13,7 +13,7 @@ class Something(str, Enum):
 
 @app.get("/")
 async def hello_world():
-    return {"message": "Hello World"}
+    return {"message": "Hello World. Version 0.0.3. New build"}
 
 
 @app.get("/hello/{name}")

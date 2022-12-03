@@ -1,0 +1,41 @@
+---
+- name: Deploying
+  hosts: staging
+  become: yes
+  gather_facts: False
+
+  tasks:
+    - name: login
+      ansible.builtin.shell: "aws ecr get-login-password | docker login --username AWS --password-stdin {{ aws_ecr_login_repository }}"
+      when: aws_ecr_login_repository is not none and aws_ecr_login_repository != ''
+
+    - name: copy docker-compose.yaml
+      copy:
+        src: ../docker-compose.yaml
+        dest: ./docker-compose.yaml
+        owner: ubuntu
+        group: ubuntu
+        mode: 0775
+
+    - name: copy .env file
+      copy:
+        src: ../../.env
+        dest: ./.env
+        mode: 0644
+
+    - name: docker compose down
+      docker_compose:
+        project_src: ./
+        state: absent
+
+    - name: cleanup dangling images
+      shell: | 
+        images=`docker images | awk '{print $3}'`
+        docker rmi ${images} -f
+      ignore_errors: yes
+
+    - name: docker compose up
+      docker_compose:
+        project_src: ./
+      environment:
+        IMAGE: "{{image}}"

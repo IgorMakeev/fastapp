@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+
+    environment {
+        POSTGRES_USER     = credentials('postgres_user')
+        POSTGRES_PASSWORD = credentials('postgres_password')
+        POSTGRES_DB       = credentials('postgres_db')
+    }
+
+    stages {
+
+        stage('Build') {
+            steps {
+                sh './deployment/scripts/build.sh'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh './deployment/scripts/test.sh'
+            }
+        }
+
+        stage('Push') {
+            steps {
+                sh './deployment/scripts/push.sh'
+            }
+        }
+
+        stage("Deploy") {
+            steps {
+                sh './deployment/scripts/env.sh'
+
+                ansiblePlaybook credentialsId: 'ansible-ssh-web', disableHostKeyChecking: true, installation: 'Ansible',
+                 inventory: 'deployment/ansible/hosts.inv', playbook: 'deployment/ansible/deploy.yaml',
+                 extras: '-e aws_ecr_login_repository=${REPOSITORY} -e image=${IMAGE}'
+            }
+        }
+    }
+}
+
