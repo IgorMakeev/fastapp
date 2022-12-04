@@ -9,7 +9,7 @@ $ docker-compose up -d --build
 ```
 
 #### Local environment setup:
-Use docker-compose.yaml for development from the root directory.  
+Use docker-compose.dev.yaml for development from the root directory.  
 
 If you have JetBrains licence you could just use 
 [docker](https://www.jetbrains.com/help/pycharm/using-docker-compose-as-a-remote-interpreter.html)
